@@ -7,10 +7,13 @@ function createForm() {
     //create <form> element
     //set id = form, and class as style_1
     //onsubmit = addListItem() and "return false;" to avoid page refreshing
+    //apply class for styling
+    //disable auto-complete, just because
     var form = document.createElement("form");
     form.setAttribute("id", "form");
     form.setAttribute("onsubmit", "addListItem(); return false;");
     form.setAttribute("class", "style_1");
+    form.setAttribute("autocomplete", "off");
 
     //create <input> element of type text
     //set id = text-id
