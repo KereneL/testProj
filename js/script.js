@@ -1,7 +1,25 @@
 // on page load - call createAddLink();
 window.onload = function () {
+    seed();
     createAddLink();
 };
+
+function seed() {
+    var arr = ["🐶🐱🐷🦆", "🏈🏐🏀⚽", "🚗🚛🚙🚓"];
+
+    for (let i = 0; i < arr.length; i++) {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = arr[i];
+
+        let spanItem = document.createElement("span");
+        spanItem.setAttribute("class", "del");
+        spanItem.setAttribute("onclick", "removeTarget()");
+        spanItem.innerHTML="❎";
+        listItem.appendChild(spanItem);
+
+        document.getElementById("list").appendChild(listItem);
+    }
+}
 
 function createForm() {
     //create <form> element
@@ -101,13 +119,35 @@ function addListItem() {
     //if the text isn't empty -
     //add a new <li> element
     //add the text to that <li>
+
+    //create <span> 
+    //apply "del" class attribute
+    //apply "removeTarget()" call onclick event
+    //add innerHTML - an X emoji
+
     //add <li> to list (where id=list)
-    //after we added an item, remove the form using another function - removeForm(), which also calls the createAddLink() function
+    //after we added an item, remove the form using another function -
+    //removeForm(), which also calls the createAddLink() function
+
     var text = document.getElementById("text-id").value;
     if (text.length > 0) {
-        var added = document.createElement("li");
-        added.innerHTML = text;
-        document.getElementById("list").appendChild(added);
+        var listItem = document.createElement("li");
+        listItem.innerHTML = text;
+
+        var spanItem = document.createElement("span");
+        spanItem.setAttribute("class", "del");
+        spanItem.setAttribute("onclick", "removeTarget()");
+        spanItem.innerHTML="❎";
+        listItem.appendChild(spanItem);
+
+        document.getElementById("list").appendChild(listItem);
         removeForm();
     }
+}
+
+function removeTarget() {
+    //get the parent of the target (X button)
+    //remove parent element
+    var item = event.target.parentNode;
+    document.getElementById("list").removeChild(item);
 }
