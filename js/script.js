@@ -1,35 +1,26 @@
 // on page load - call createAddLink();
 window.onload = function () {
-    seed();
     createAddLink();
+    seed();
+
 };
 
 function seed() {
     var arr = ["🐶🐱🐷🦆", "🏈🏐🏀⚽", "🚗🚛🚙🚓"];
-
     for (let i = 0; i < arr.length; i++) {
-        let listItem = document.createElement("li");
-        listItem.innerHTML = arr[i];
-
-        let spanItem = document.createElement("span");
-        spanItem.setAttribute("class", "del");
-        spanItem.setAttribute("onclick", "removeTarget()");
-        spanItem.innerHTML="❎";
-        listItem.appendChild(spanItem);
-
-        document.getElementById("list").appendChild(listItem);
+        addListItem(arr[i]);
     }
 }
 
 function createForm() {
     //create <form> element
     //set id = form, and class as style_1
-    //onsubmit = addListItem() and "return false;" to avoid page refreshing
+    //onsubmit = extractTextFromForm() and "return false;" to avoid page refreshing
     //apply class for styling
     //disable auto-complete, just because
     var form = document.createElement("form");
     form.setAttribute("id", "form");
-    form.setAttribute("onsubmit", "addListItem(); return false;");
+    form.setAttribute("onsubmit", "extractTextFromForm(); return false;");
     form.setAttribute("class", "style_1");
     form.setAttribute("autocomplete", "off");
 
@@ -45,12 +36,12 @@ function createForm() {
     form.appendChild(inputName);
 
     //create <input> element of type button
-    //set onclick event - addListItem()
+    //set onclick event - extractTextFromForm()
     //set button text = Submit
     //add element as child to form
     var inputSubmit = document.createElement("input");
     inputSubmit.setAttribute("type", "button");
-    inputSubmit.setAttribute("onclick", "addListItem()");
+    inputSubmit.setAttribute("onclick", "extractTextFromForm();");
     inputSubmit.setAttribute("value", "Add");
     form.appendChild(inputSubmit);
 
@@ -92,7 +83,7 @@ function createAddLink() {
     linkCreateNew.setAttribute("href", "javascript:void(0)");
     linkCreateNew.setAttribute("onclick", "createForm()");
     linkCreateNew.setAttribute("class", "style_1");
-    linkCreateNew.innerHTML = "Create New...";
+    linkCreateNew.innerHTML = "Add More...";
 
     //create a new <div> element
     //add the <a> element linkCreateNew to that <div>
@@ -114,9 +105,17 @@ function removeAddLink() {
     div.parentNode.removeChild(div);
 }
 
-function addListItem() {
+function extractTextFromForm() {
     //get the text from the form's textbox
-    //if the text isn't empty -
+    //if it's not empty -
+    //call addListItem() with 'text' as an argument
+    var text = document.getElementById("text-id").value;
+    if (text.length > 0) {
+        addListItem(text);
+    }
+}
+
+function addListItem(text) {
     //add a new <li> element
     //add the text to that <li>
 
@@ -126,23 +125,16 @@ function addListItem() {
     //add innerHTML - an X emoji
 
     //add <li> to list (where id=list)
-    //after we added an item, remove the form using another function -
-    //removeForm(), which also calls the createAddLink() function
+    let listItem = document.createElement("li");
+    listItem.innerHTML = text;
 
-    var text = document.getElementById("text-id").value;
-    if (text.length > 0) {
-        var listItem = document.createElement("li");
-        listItem.innerHTML = text;
+    let spanItem = document.createElement("span");
+    spanItem.setAttribute("class", "del");
+    spanItem.setAttribute("onclick", "removeTarget()");
+    spanItem.innerHTML = "❎";
+    listItem.appendChild(spanItem);
 
-        var spanItem = document.createElement("span");
-        spanItem.setAttribute("class", "del");
-        spanItem.setAttribute("onclick", "removeTarget()");
-        spanItem.innerHTML="❎";
-        listItem.appendChild(spanItem);
-
-        document.getElementById("list").appendChild(listItem);
-        removeForm();
-    }
+    document.getElementById("list").appendChild(listItem);
 }
 
 function removeTarget() {
