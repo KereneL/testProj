@@ -5,11 +5,12 @@ window.onload = function() {
 
 function createForm() {
     //create <form> element
-    //set id = form
+    //set id = form, and class as style_1
     //onsubmit = addListItem() and "return false;" to avoid page refreshing
     var form = document.createElement("form");
     form.setAttribute("id", "form");
     form.setAttribute("onsubmit", "addListItem(); return false;");
+    form.setAttribute("class", "style_1");
 
     //create <input> element of type text
     //set id = text-id
@@ -61,13 +62,15 @@ function removeForm() {
 }
 
 function createAddLink() {
-    //create anchor (<a>) element
+    //create anchor (<div>) element
     //add href attribute as "javascript:void(0)" so the page won't reload on click
     //add onclick event - createForm()
-    //add the link to the end of container div
-    var linkCreateNew = document.createElement("a");
+    //add class - button
+    //add the label
+    var linkCreateNew = document.createElement("div");
     linkCreateNew.setAttribute("href", "javascript:void(0)");
     linkCreateNew.setAttribute("onclick", "createForm()");
+    linkCreateNew.setAttribute("class", "style_1");
     linkCreateNew.innerHTML = "Create New...";
 
     //create a new <div> element
@@ -82,10 +85,10 @@ function createAddLink() {
 }
 
 function removeAddLink(){
-    //select anchor (<a>) element
-    //select <a>'s parent (which is a <div>)
+    //select elements with "style_1" class
+    //select elements parent (which is a <div>)
     //remove element from parent element
-    var link = document.getElementsByTagName("a")[0];
+    var link = document.getElementsByClassName("style_1")[0];
     var div = link.parentNode;
     div.parentNode.removeChild(div);
 }
