@@ -1,7 +1,7 @@
 // on page load - call createAddLink();
-window.onload = function() {
+window.onload = function () {
     createAddLink();
-  };
+};
 
 function createForm() {
     //create <form> element
@@ -47,7 +47,7 @@ function createForm() {
     document.getElementById("container").appendChild(form);
 
     //when the form opens, remove the link
-    removeAddLink();  
+    removeAddLink();
     //set focus to the name field
     inputName.focus();
 }
@@ -84,7 +84,7 @@ function createAddLink() {
     linkCreateNew.focus();
 }
 
-function removeAddLink(){
+function removeAddLink() {
     //select elements with "style_1" class
     //select elements parent (which is a <div>)
     //remove element from parent element
@@ -93,7 +93,7 @@ function removeAddLink(){
     div.parentNode.removeChild(div);
 }
 
-function addListItem(){
+function addListItem() {
     //get the text from the form's textbox
     //if the text isn't empty -
     //add a new <li> element
@@ -101,7 +101,7 @@ function addListItem(){
     //add <li> to list (where id=list)
     //after we added an item, remove the form using another function - removeForm(), which also calls the createAddLink() function
     var text = document.getElementById("text-id").value;
-    if (text.length > 0){
+    if (text.length > 0) {
         var added = document.createElement("li");
         added.innerHTML = text;
         document.getElementById("list").appendChild(added);
