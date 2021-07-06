@@ -6,7 +6,7 @@ window.onload = function () {
 };
 
 function seed() {
-    var arr = ["🐶🐱🐷🦆", "🏈🏐🏀⚽", "🚗🚛🚙🚓"];
+    var arr = ["🐶🐱🐷🦆", "Hello World.js", "🏈🏐🏀⚽", "🚗🚛🚙🚓"];
     for (let i = 0; i < arr.length; i++) {
         addListItem(arr[i]);
     }
@@ -126,12 +126,15 @@ function addListItem(text) {
 
     //add <li> to list (where id=list)
     let listItem = document.createElement("li");
-    listItem.innerHTML = text;
+
+    let pText = document.createElement("p");
+    pText.innerHTML = text;
+    listItem.appendChild(pText);
 
     let spanItem = document.createElement("span");
-    spanItem.setAttribute("class", "del");
+    spanItem.setAttribute("class", "delete-button");
     spanItem.setAttribute("onclick", "removeTarget()");
-    spanItem.innerHTML = "❎";
+    spanItem.innerHTML = `&#215;`;
     listItem.appendChild(spanItem);
 
     document.getElementById("list").appendChild(listItem);
