@@ -25,7 +25,6 @@ function saveArr() {
 
 function loadArr() {
     var tempLoaded = JSON.parse(localStorage.getItem("notes"));
-    console.log(tempLoaded);
 
     tempLoaded.forEach(note => {
         addNewListItem(note.text, note.dateObj);
