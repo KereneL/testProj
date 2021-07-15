@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/email-pattern.png");
+    background-image: url("images/email-pattern.png");
 }
 
 h1 {
@@ -39,7 +39,7 @@ form i {
     padding-right: 0px;
     margin: 15px;
     
-    background-image: url("/images/lined_paper.png");
+    background-image: url("images/lined_paper.png");
     
     background-blend-mode: overlay;
 
