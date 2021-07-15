@@ -1,76 +1,114 @@
 body {
-    font-family: Verdana, sans-serif;
-    background-color: slategray;
+    background-image: url("/images/email-pattern.png");
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
 }
 
-li {
-    box-sizing: border-box;
+form {
+    margin: 1em;
+}
+
+form input {
+    margin: 0 15px;
+}
+
+form i {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+
+#list {
     display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    margin: 5px;
-    transition: all 200ms;
-    list-style-position: inside;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-flow: row wrap;
 }
 
-li:hover {
-    border-radius: 5px;
-    ;
-    background-color: white;
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.1);
-}
-
-li .delete-button {
+.list-item {
+    height: 300px;
+    min-width: 300px;
+    flex: 1 1 30%;
+    box-sizing: border-box;
     position: relative;
+
+    padding: 5px;
+    padding-right: 0px;
+    margin: 15px;
+    
+    background-image: url("/images/lined_paper.png");
+    
+    background-blend-mode: overlay;
+
+    border-radius: 5px;
     color: black;
-    visibility: hidden;
-    margin-left: 20px;
-    opacity: 0;
-    left: 10px;
-    transition: all 100ms;
+    transform: scale(0.99);
+
+    transition: all 200ms;
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
 }
 
+.list-item:hover {
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.4);
+    transform: scale(1);
+}
 
-li:hover .delete-button {
+.list-item .delete-button {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 0px;
+    right: -5px;
+    transition: all 200ms;
+}
+
+.list-item:hover .delete-button {
     visibility: visible;
     cursor: pointer;
     opacity: 1;
-    left: 0px;
+    right: 5px;
     transition: inherit;
 }
 
-li:hover .delete-button:hover {
+
+.list-item:hover .delete-button:hover {
     color: red;
     transition: inherit;
 }
 
-li p{
-    padding: 0;
-    margin: 0;
+.list-item .text-wrapper {
+    max-height: 245px;
+    margin: 20px 3.5px;
+    margin-right: 1px;
+    overflow: auto;
+    box-sizing: content-box;
+    text-align: justify;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 
-#container {
-    margin: 15px;
-    padding: 15px;
-    border: 1px solid;
-    width: fit-content;
-    background-color: white;
-
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
-}
-
-.style_1 {
+.list-item .time-stamp {
+    position: absolute;
+    bottom: 0;
     padding: 5px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    background-color: tan;
-    border: slategray solid 3px;
-    cursor: pointer;
-    text-align: center;
+    margin: 0;
+    margin-left: -5px;
+    background-color: khaki;
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.1);
+
+    transition: inherit;
+}
+
+.list-item:hover .time-stamp {
+    transform: skew(0) translate(5px, 10px);
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
+    transition: inherit;
+}
+
+
+.time-stamp span {
+    padding-left: 0.25rem;
 }
